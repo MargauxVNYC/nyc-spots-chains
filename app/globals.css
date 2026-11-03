@@ -313,3 +313,79 @@ img { display: block; max-width: 100%; }
 
 .image-card img { height: 150px; }
 .image-body { padding: 10px 12px; gap: 6px; }
+
+/* =========== Prompt Chain Tool =========== */
+
+/* ---- Light theme (dark is the default from the admin styles above) ---- */
+:root[data-theme="light"] {
+  --bg: #f6f5fb;
+  --surface: #ffffffd9;
+  --surface-solid: #ffffff;
+  --border: #1b15301a;
+  --border-strong: #7c3aed4d;
+  --text: #1b1530;
+  --muted: #1b1530b8;
+  --soft: #1b153085;
+  --accent: #7c3aed;
+  --accent-2: #0284c7;
+  --accent-contrast: #ffffff;
+  --up: #16a34a;
+  --down: #e11d48;
+}
+:root[data-theme="light"] body {
+  background:
+          radial-gradient(circle at 10% 0%, #7c3aed14, transparent 35%),
+          radial-gradient(circle at 90% 10%, #0284c712, transparent 35%),
+          var(--bg);
+}
+:root[data-theme="light"] .sidebar { background: #ffffffb3; }
+:root[data-theme="light"] .topbar { background: #f6f5fbd9; }
+:root[data-theme="light"] .input,
+:root[data-theme="light"] .select { background: #ffffff; }
+:root[data-theme="light"] .select option { background: #fff; color: var(--text); }
+:root[data-theme="light"] .data th { background: #1b153008; }
+:root[data-theme="light"] .chip-btn { background: #1b15300d; }
+:root[data-theme="light"] .prompt pre { background: #1b153008; }
+:root[data-theme="light"] .badge { background: #1b15300a; }
+
+/* ---- Theme toggle ---- */
+.topbar-right { display: flex; align-items: center; gap: 12px; }
+.theme-toggle {
+  display: inline-flex; gap: 2px; padding: 3px;
+  border-radius: 999px; border: 1px solid var(--border); background: var(--surface);
+}
+.theme-opt {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 5px 10px; border-radius: 999px; border: none; cursor: pointer;
+  font-size: 12px; font-weight: 600; color: var(--muted); background: transparent;
+}
+.theme-opt.active { background: var(--accent); color: var(--accent-contrast); }
+.floating-theme { position: fixed; top: 16px; right: 16px; z-index: 50; }
+
+/* ---- Sidebar footer links ---- */
+.side-footer-links { display: flex; flex-direction: column; gap: 6px; }
+.side-footer-links a:hover { color: var(--accent-2); }
+
+/* ---- Chains board ---- */
+.create-chain { margin-bottom: 16px; max-width: 640px; }
+.create-grid { display: grid; grid-template-columns: 80px 1fr; gap: 10px; }
+.create-grid .input { width: 100%; min-width: 0; }
+.emoji-input { text-align: center; font-size: 20px; }
+
+.chain-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+.chain-card { display: flex; flex-direction: column; gap: 10px; }
+.chain-top { display: flex; align-items: flex-start; gap: 10px; }
+.chain-top .badge { margin-left: auto; flex-shrink: 0; }
+.chain-emoji {
+  width: 40px; height: 40px; border-radius: 12px; flex-shrink: 0;
+  display: grid; place-items: center; font-size: 20px;
+  background: linear-gradient(135deg, #a78bfa33, #38bdf833);
+}
+.chain-name { margin: 0 0 2px; font-size: 16px; font-weight: 700; }
+.chain-desc { margin: 0; font-size: 14px; color: var(--muted); line-height: 1.45; flex: 1; }
+.chain-meta { display: flex; gap: 14px; font-size: 13px; color: var(--soft); }
+
+@media (max-width: 700px) {
+  .theme-label { display: none; }
+  .topbar-right { gap: 8px; }
+}

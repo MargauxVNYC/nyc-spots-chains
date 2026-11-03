@@ -1,18 +1,11 @@
-import { requireAdmin } from "../lib/admin";
-
 import type { Metadata } from "next";
-export const metadata: Metadata = { title: "Overview · NYC Spots Admin" };
+import { requireAdmin } from "../lib/admin";
+import ChainsBoard from "./components/ChainsBoard";
 
 export const dynamic = "force-dynamic";
+export const metadata: Metadata = { title: "Prompt chains · NYC Spots" };
 
-export default async function Overview() {
-  const { profile } = await requireAdmin();
-
-  return (
-      <>
-        <p className="eyebrow">Overview</p>
-        <h1 className="title">Welcome, {profile.first_name ?? "admin"}</h1>
-        <p className="muted">You&apos;re in. Stats are coming next.</p>
-      </>
-  );
+export default async function Home() {
+    await requireAdmin();
+    return <ChainsBoard />;
 }
